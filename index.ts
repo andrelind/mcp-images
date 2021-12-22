@@ -5,8 +5,8 @@ import fs from 'fs';
 import sharp from 'sharp';
 
 import characters from '../app/src/assets/characters';
-// import crisis from '../app/src/assets/crisis';
-// import tactics from '../app/src/assets/tactics';
+import crisis from '../app/src/assets/crisis';
+import tactics from '../app/src/assets/tactics';
 
 const newLayout = [
   'blackpanther_tchalla',
@@ -52,15 +52,19 @@ const cleanName = (name: string) => {
     .replace(/,/g, '')
     .replace(/\./g, '')
     .replace(/'/g, '')
-    .replace(/-/g, '');
+    .replace(/-/g, '')
+    .replace(/\?/g, '')
+    .replace(/\!/g, '')
+    .replace(/�/g, '')
+    .replace(/é/g, 'e');
 };
 
-async function start() {
+const runner = async () => {
   for await (const character of characters) {
     const name = cleanName(character.name);
     const alias = cleanName(character.alias);
 
-    console.log({ name, alias });
+    log(chalk.yellow(name));
 
     const id = `${name}_${alias}`;
     const dir = `./images/characters/${id}`;
@@ -104,6 +108,36 @@ async function start() {
       }
     }
   }
-}
 
-start();
+  for await (const c of crisis) {
+    const name = cleanName(c.crisis);
+    const dir = `./images/crisis`;
+
+    log(chalk.blue(name));
+
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+
+    if (!fs.existsSync(`${dir}/${name}.png`)) {
+      await downloadImage(c.image, `${dir}/${name}.png`);
+    }
+  }
+
+  for await (const t of tactics) {
+    const name = cleanName(t.tactic);
+    const dir = `./images/tactics`;
+
+    log(chalk.green(name));
+
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir);
+    }
+
+    if (!fs.existsSync(`${dir}/${name}.png`)) {
+      await downloadImage(t.image, `${dir}/${name}.png`);
+    }
+  }
+};
+
+runner();
