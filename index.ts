@@ -35,7 +35,11 @@ const newLayout = [
   'wintersoldier_jamesbuckybarnes',
 ];
 // 282x326
-const centerLayout = ['antman_scottlang', 'wasp_janetvandyne'];
+const centerLayout = [
+  'antman_scottlang',
+  'msmarvel_kamalakhan',
+  'wasp_janetvandyne',
+];
 
 const log = console.log;
 
