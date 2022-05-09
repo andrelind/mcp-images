@@ -32,7 +32,9 @@ const run = async () => {
       const img = url.substring(url.lastIndexOf('/') + 1);
 
       return {
-        id: img.slice(0, 4).toLowerCase(),
+        id: img.toLowerCase().includes('cpe')
+          ? img.slice(0, 5).toLowerCase()
+          : img.slice(0, 4).toLowerCase(),
         url,
         img,
       };
