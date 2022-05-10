@@ -42,10 +42,7 @@ const run = async () => {
   });
 
   for await (const o of res) {
-    await downloadImage(
-      o.url,
-      `images/cp/${o.id}.${o.img.includes('.png') ? 'png' : 'jpg'}`
-    );
+    await downloadImage(o.url, `images/contentpacks/${o.id}.png`);
   }
   console.log(res);
 
