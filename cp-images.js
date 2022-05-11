@@ -3,6 +3,7 @@ const nightmare = Nightmare({ show: true });
 const fs = require('fs');
 const download = require('image-downloader');
 const chalk = require('chalk');
+const sharp = require('sharp');
 
 const downloadImage = async (url, dest) => {
   console.log(`Downloading ${chalk.blue(url)} => ${chalk.green(dest)}`);
@@ -41,10 +42,29 @@ const run = async () => {
     });
   });
 
-  for await (const o of res) {
-    await downloadImage(o.url, `images/contentpacks/${o.id}.png`);
+  // Filter result to remove duplicates
+  const result = [];
+  res.forEach((r) => {
+    const index = result.findIndex((rr) => rr.id === r.id);
+
+    if (index === -1) {
+      result.push(r);
+    } else {
+      result[index] = r;
+    }
+  });
+
+  for await (const o of result) {
+    const loc = `images/contentpacks/${o.id}.png`;
+    await downloadImage(o.url, loc);
+    // const buffer = await sharp(loc)
+    //   .resize(720, 720)
+    //   .extract({ width: 370, height: 510, left: 180, top: 100 })
+    //   .toBuffer();
+    // await sharp(buffer).toFile(loc);
+    // .catch((err) => console.log(err));
   }
-  console.log(res);
+  console.log(result);
 
   await nightmare.end();
 };
