@@ -33,6 +33,10 @@ const newLayout = [
   'ultron_ultron',
   'valkyrie_brunhilde',
   'wintersoldier_jamesbuckybarnes',
+  'blackswan_blackswan',
+  'heimdalltheallseeing_heimdall',
+  'skurgetheexecutioner_skurge',
+  'supergiant_supergiant',
 ];
 // 282x326
 const centerLayout = [
@@ -44,7 +48,7 @@ const centerLayout = [
 const log = console.log;
 
 const downloadImage = async (url: string, dest: string) => {
-  log(`Downloading ${chalk.blue(url)} => ${chalk.green(dest)}`);
+  // log(`Downloading ${chalk.blue(url)} => ${chalk.green(dest)}`);
   return await download.image({ url, dest });
 };
 
@@ -87,30 +91,30 @@ const runner = async () => {
       );
     }
 
-    if (fs.existsSync(`${dir}/healthy.png`)) {
-      if (newLayout.includes(id)) {
-        await sharp(`${dir}/healthy.png`)
-          .resize(600, 401)
-          // .extract({ width: 156, height: 250, left: 0, top: 128 })
-          .extract({ width: 156, height: 125, left: 0, top: 128 })
-          .toFile(`${dir}/portrait.png`)
-          .catch((err) => console.log(err));
-      } else if (centerLayout.includes(id)) {
-        await sharp(`${dir}/healthy.png`)
-          .resize(1406, 936)
-          // .extract({ width: 282, height: 326, left: 490, top: 240 })
-          .extract({ width: 282, height: 163, left: 490, top: 240 })
-          .toFile(`${dir}/portrait.png`)
-          .catch((err) => console.log(err));
-      } else {
-        await sharp(`${dir}/healthy.png`)
-          .resize(1192, 1787)
-          // .extract({ width: 432, height: 800, left: 0, top: 0 })
-          .extract({ width: 432, height: 400, left: 0, top: 0 })
-          .toFile(`${dir}/portrait.png`)
-          .catch((err) => console.log(err));
-      }
+    // if (fs.existsSync(`${dir}/healthy.png`)) {
+    if (newLayout.includes(id)) {
+      await sharp(`${dir}/healthy.png`)
+        .resize(600, 401)
+        // .extract({ width: 156, height: 250, left: 0, top: 128 })
+        .extract({ width: 156, height: 125, left: 0, top: 128 })
+        .toFile(`${dir}/portrait.png`)
+        .catch((err) => console.log(err));
+    } else if (centerLayout.includes(id)) {
+      await sharp(`${dir}/healthy.png`)
+        .resize(1406, 936)
+        // .extract({ width: 282, height: 326, left: 490, top: 240 })
+        .extract({ width: 282, height: 163, left: 490, top: 240 })
+        .toFile(`${dir}/portrait.png`)
+        .catch((err) => console.log(err));
+    } else {
+      await sharp(`${dir}/healthy.png`)
+        .resize(1192, 1787)
+        // .extract({ width: 432, height: 800, left: 0, top: 0 })
+        .extract({ width: 432, height: 400, left: 0, top: 0 })
+        .toFile(`${dir}/portrait.png`)
+        .catch((err) => console.log(err));
     }
+    // }
   }
 
   for await (const c of crisis) {
