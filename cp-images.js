@@ -31,11 +31,10 @@ const run = async () => {
       const cp = e.getAttribute('alt');
       const url = e.getAttribute('data-src');
       const img = url.substring(url.lastIndexOf('/') + 1);
+      const id = img.toLowerCase().split('_')[0].replace('en', '');
 
       return {
-        id: img.toLowerCase().includes('cpe')
-          ? img.slice(0, 5).toLowerCase()
-          : img.slice(0, 4).toLowerCase(),
+        id,
         url,
         img,
       };
