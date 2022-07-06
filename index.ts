@@ -99,6 +99,13 @@ const runner = async () => {
         .extract({ width: 156, height: 125, left: 0, top: 128 })
         .toFile(`${dir}/portrait.png`)
         .catch((err) => console.log(err));
+
+      // await sharp(`${dir}/healthy.png`)
+      //   .resize(600, 401)
+      //   // .extract({ width: 282, height: 326, left: 490, top: 240 })
+      //   .extract({ width: 140, height: 73, left: 10, top: 52 })
+      //   .toFile(`${dir}/stats.png`)
+      //   .catch((err) => console.log(err));
     } else if (centerLayout.includes(id)) {
       await sharp(`${dir}/healthy.png`)
         .resize(1406, 936)
@@ -106,6 +113,13 @@ const runner = async () => {
         .extract({ width: 282, height: 163, left: 490, top: 240 })
         .toFile(`${dir}/portrait.png`)
         .catch((err) => console.log(err));
+
+      // await sharp(`${dir}/healthy.png`)
+      //   .resize(1406, 936)
+      //   // .extract({ width: 282, height: 326, left: 490, top: 240 })
+      //   .extract({ width: 320, height: 120, left: 545, top: 135 })
+      //   .toFile(`${dir}/stats.png`)
+      //   .catch((err) => console.log(err));
     } else {
       await sharp(`${dir}/healthy.png`)
         .resize(1192, 1787)
@@ -113,6 +127,13 @@ const runner = async () => {
         .extract({ width: 432, height: 400, left: 0, top: 0 })
         .toFile(`${dir}/portrait.png`)
         .catch((err) => console.log(err));
+
+      // await sharp(`${dir}/healthy.png`)
+      //   .resize(1192, 1787)
+      //   // .extract({ width: 432, height: 800, left: 0, top: 0 })
+      //   .extract({ width: 650, height: 160, left: 505, top: 165 })
+      //   .toFile(`${dir}/stats.png`)
+      //   .catch((err) => console.log(err));
     }
     // }
   }
