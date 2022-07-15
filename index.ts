@@ -37,6 +37,10 @@ const newLayout = [
   'heimdalltheallseeing_heimdall',
   'skurgetheexecutioner_skurge',
   'supergiant_supergiant',
+  // 'crimsondynamo_dimitribukharin',
+  // 'darkstar_layniapetrovna',
+  'malekiththeaccursed_malekith',
+  // 'ursamajor_mikhailursus',
 ];
 // 282x326
 const centerLayout = [
