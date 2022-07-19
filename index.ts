@@ -41,6 +41,11 @@ const newLayout = [
   // 'darkstar_layniapetrovna',
   'malekiththeaccursed_malekith',
   // 'ursamajor_mikhailursus',
+  'arnimzola_arnimzola',
+  'baronstrucker_wolfgangvonstrucker',
+  'nickfuryandthehowlingcommandos_nicholasfurysrtimothydumdumdugangabrieljones',
+  'redskullmasterofhydra_johannschmidt',
+  'steverogerscaptainamerica_steverogers',
 ];
 // 282x326
 const centerLayout = [
