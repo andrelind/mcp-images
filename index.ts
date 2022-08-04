@@ -1,12 +1,10 @@
-// @ts-ignore
 import download from 'image-downloader';
-import chalk from 'chalk';
 import fs from 'fs';
 import sharp from 'sharp';
-
 import characters from '../app/src/assets/characters';
 import crisis from '../app/src/assets/crisis';
 import tactics from '../app/src/assets/tactics';
+import fetchCPS from './fetch-cps';
 
 const newLayout = [
   'blackpanther_tchalla',
@@ -81,24 +79,24 @@ const runner = async () => {
     const name = cleanName(character.name);
     const alias = cleanName(character.alias);
 
-    log(chalk.yellow(name));
+    log(name);
 
     const id = `${name}_${alias}`;
-    const dir = `./images/characters/${id}`;
+    const dir = `${process.cwd()}/images/characters/${id}`;
 
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
 
-    if (!fs.existsSync(`${dir}/healthy.png`)) {
-      await Promise.all(
-        [character.healthy, character.injured].map(
-          (url, i) =>
-            url &&
-            downloadImage(url, `${dir}/${i === 0 ? 'healthy' : 'injured'}.png`)
-        )
-      );
-    }
+    // if (!fs.existsSync(`${dir}/healthy.png`)) {
+    await Promise.all(
+      [character.healthy, character.injured].map(
+        (url, i) =>
+          url &&
+          downloadImage(url, `${dir}/${i === 0 ? 'healthy' : 'injured'}.png`)
+      )
+    );
+    // }
 
     // if (fs.existsSync(`${dir}/healthy.png`)) {
     if (newLayout.includes(id)) {
@@ -149,33 +147,35 @@ const runner = async () => {
 
   for await (const c of crisis) {
     const name = cleanName(c.crisis);
-    const dir = `./images/crisis`;
+    const dir = `${process.cwd()}/images/crisis`;
 
-    log(chalk.blue(name));
+    log(name);
 
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
 
-    if (!fs.existsSync(`${dir}/${name}.png`)) {
-      await downloadImage(c.image, `${dir}/${name}.png`);
-    }
+    // if (!fs.existsSync(`${dir}/${name}.png`)) {
+    await downloadImage(c.image, `${dir}/${name}.png`);
+    // }
   }
 
   for await (const t of tactics) {
     const name = cleanName(t.tactic);
-    const dir = `./images/tactics`;
+    const dir = `${process.cwd()}/images/tactics`;
 
-    log(chalk.green(name));
+    log(name);
 
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir);
     }
 
-    if (!fs.existsSync(`${dir}/${name}.png`)) {
-      await downloadImage(t.image, `${dir}/${name}.png`);
-    }
+    // if (!fs.existsSync(`${dir}/${name}.png`)) {
+    await downloadImage(t.image, `${dir}/${name}.png`);
+    // }
   }
+
+  await fetchCPS();
 };
 
 runner();
