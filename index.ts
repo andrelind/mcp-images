@@ -44,6 +44,7 @@ const newLayout = [
   'nickfuryandthehowlingcommandos_nicholasfurysrtimothydumdumdugangabrieljones',
   'redskullmasterofhydra_johannschmidt',
   'steverogerscaptainamerica_steverogers',
+  'theoriginalhumantorch_jimhammond',
 ];
 // 282x326
 const centerLayout = [
@@ -89,13 +90,17 @@ const runner = async () => {
     }
 
     // if (!fs.existsSync(`${dir}/healthy.png`)) {
-    await Promise.all(
-      [character.healthy, character.injured].map(
-        (url, i) =>
-          url &&
-          downloadImage(url, `${dir}/${i === 0 ? 'healthy' : 'injured'}.png`)
-      )
-    );
+    try {
+      await Promise.all(
+        [character.healthy, character.injured].map(
+          (url, i) =>
+            url &&
+            downloadImage(url, `${dir}/${i === 0 ? 'healthy' : 'injured'}.png`)
+        )
+      );
+    } catch (error) {
+      console.log({ error });
+    }
     // }
 
     // if (fs.existsSync(`${dir}/healthy.png`)) {
