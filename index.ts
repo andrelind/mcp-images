@@ -147,7 +147,11 @@ const runner = async () => {
       //   .toFile(`${dir}/stats.png`)
       //   .catch((err) => console.log(err));
     }
-    // }
+
+    // await sharp(`${dir}/healthy.png`)
+    //   .toFile(`${dir}_portrait.png`)
+    //   .catch((err) => console.log(err));
+    // // }
   }
 
   for await (const c of crisis) {
@@ -161,7 +165,11 @@ const runner = async () => {
     }
 
     // if (!fs.existsSync(`${dir}/${name}.png`)) {
-    await downloadImage(c.image, `${dir}/${name}.png`);
+    try {
+      await downloadImage(c.image, `${dir}/${name}.png`);
+    } catch (error) {
+      console.log({ error });
+    }
     // }
   }
 
@@ -176,7 +184,11 @@ const runner = async () => {
     }
 
     // if (!fs.existsSync(`${dir}/${name}.png`)) {
-    await downloadImage(t.image, `${dir}/${name}.png`);
+    try {
+      await downloadImage(t.image, `${dir}/${name}.png`);
+    } catch (error) {
+      console.log({ error });
+    }
     // }
   }
 
