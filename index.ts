@@ -45,6 +45,8 @@ const newLayout = [
   'redskullmasterofhydra_johannschmidt',
   'steverogerscaptainamerica_steverogers',
   'theoriginalhumantorch_jimhammond',
+  'sentinelmk4_sentinelmk4',
+  'sentinelprimemk4_sentinelprimemk4',
 ];
 // 282x326
 const centerLayout = [

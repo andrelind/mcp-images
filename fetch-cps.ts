@@ -71,6 +71,7 @@ export const fetchCPS = async () => {
     // .catch((err) => console.log(err));
   }
   console.log(result);
+  await browser.close();
 };
 
 export default fetchCPS;
