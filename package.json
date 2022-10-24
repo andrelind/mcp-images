@@ -6,7 +6,7 @@
   "author": "Guido Kessels <guidokessels@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node index.ts"
+    "scrape": "ts-node index.ts"
   },
   "dependencies": {
     "image-downloader": "^4.3.0",

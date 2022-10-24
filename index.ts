@@ -48,6 +48,7 @@ const newLayout = [
   'sentinelmk4_sentinelmk4',
   'sentinelprimemk4_sentinelprimemk4',
   'theblob_freddukes',
+  'pyro_stjohnallerdyce',
 ];
 // 282x326
 const centerLayout = [
