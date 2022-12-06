@@ -49,6 +49,8 @@ const newLayout = [
   'sentinelprimemk4_sentinelprimemk4',
   'theblob_freddukes',
   'pyro_stjohnallerdyce',
+  'loganthewolverine_jamesloganhowlett',
+  'sabretoothapexpredator_victorcreed',
 ];
 // 282x326
 const centerLayout = [
