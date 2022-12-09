@@ -51,6 +51,9 @@ const newLayout = [
   'pyro_stjohnallerdyce',
   'loganthewolverine_jamesloganhowlett',
   'sabretoothapexpredator_victorcreed',
+  'helaqueenofhel_hela',
+  'thorprinceofasgard_thorodinson',
+  'lokigodofmischief_lokilaufeyson',
 ];
 // 282x326
 const centerLayout = [
