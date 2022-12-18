@@ -54,6 +54,7 @@ const newLayout = [
   'helaqueenofhel_hela',
   'thorprinceofasgard_thorodinson',
   'lokigodofmischief_lokilaufeyson',
+  'rhino_alekseisytsevich',
 ];
 // 282x326
 const centerLayout = [
