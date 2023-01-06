@@ -55,6 +55,7 @@ const newLayout = [
   'thorprinceofasgard_thorodinson',
   'lokigodofmischief_lokilaufeyson',
   'rhino_alekseisytsevich',
+  'agentvenom_flashthompson',
 ];
 // 282x326
 const centerLayout = [
