@@ -56,6 +56,7 @@ const newLayout = [
   'lokigodofmischief_lokilaufeyson',
   'rhino_alekseisytsevich',
   'agentvenom_flashthompson',
+  'spiderwoman_jessicadrew',
 ];
 // 282x326
 const centerLayout = [
