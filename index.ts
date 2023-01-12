@@ -1,5 +1,5 @@
-import download from 'image-downloader';
 import fs from 'fs';
+import { cleanName, downloadImage } from './helpers';
 import sharp from 'sharp';
 import characters from '../app/src/assets/characters';
 import crisis from '../app/src/assets/crisis';
@@ -66,26 +66,6 @@ const centerLayout = [
 ];
 
 const log = console.log;
-
-const downloadImage = async (url: string, dest: string) => {
-  // log(`Downloading ${chalk.blue(url)} => ${chalk.green(dest)}`);
-  return await download.image({ url, dest });
-};
-
-const cleanName = (name: string) => {
-  return name
-    .toLowerCase()
-    .replace(/\s/g, '')
-    .replace(/"/g, '')
-    .replace(/,/g, '')
-    .replace(/\./g, '')
-    .replace(/'/g, '')
-    .replace(/-/g, '')
-    .replace(/\?/g, '')
-    .replace(/\!/g, '')
-    .replace(/�/g, '')
-    .replace(/é/g, 'e');
-};
 
 const runner = async () => {
   for await (const character of characters) {
