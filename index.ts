@@ -57,6 +57,7 @@ const newLayout = [
   'rhino_alekseisytsevich',
   'agentvenom_flashthompson',
   'spiderwoman_jessicadrew',
+  'betaraybill_bill',
 ];
 // 282x326
 const centerLayout = [
