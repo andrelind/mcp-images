@@ -16,7 +16,8 @@
     "titleBar.activeBackground": "#8b5cf6",
     "titleBar.activeForeground": "#e7e7e7",
     "titleBar.inactiveBackground": "#8b5cf699",
-    "titleBar.inactiveForeground": "#e7e7e799"
+    "titleBar.inactiveForeground": "#e7e7e799",
+    "commandCenter.border": "#e7e7e799"
   },
   "peacock.color": "#8B5CF6",
   "git.allowForcePush": true
