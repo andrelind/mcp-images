@@ -78,7 +78,8 @@ const runner = async () => {
     const id = `${name}_${alias}`;
     const dir = `${process.cwd()}/images/characters/${id}`;
 
-    if (!fs.existsSync(dir)) {
+    const wasFound = fs.existsSync(dir);
+    if (!wasFound) {
       fs.mkdirSync(dir);
     }
 
@@ -97,7 +98,7 @@ const runner = async () => {
     // }
 
     // if (fs.existsSync(`${dir}/healthy.png`)) {
-    if (newLayout.includes(id)) {
+    if (newLayout.includes(id) || !wasFound) {
       await sharp(`${dir}/healthy.png`)
         .resize(600, 401)
         // .extract({ width: 156, height: 250, left: 0, top: 128 })
