@@ -1,10 +1,11 @@
 import fs from 'fs';
 import { cleanName, downloadImage } from './helpers';
 import sharp from 'sharp';
-import characters from '../app/src/assets/characters';
-import crisis from '../app/src/assets/crisis';
-import tactics from '../app/src/assets/tactics';
-import fetchCPS from './fetch-cps';
+import characters from '../../app/src/assets/characters';
+import crisis from '../../app/src/assets/crisis';
+import tactics from '../../app/src/assets/tactics';
+// import fetchCPS from './fetch-cps';
+import { getBoxSets } from './jp';
 
 const newLayout = [
   'blackpanther_tchalla',
@@ -105,13 +106,6 @@ const runner = async () => {
         .extract({ width: 156, height: 125, left: 0, top: 128 })
         .toFile(`${dir}/portrait.png`)
         .catch((err) => console.log(err));
-
-      // await sharp(`${dir}/healthy.png`)
-      //   .resize(600, 401)
-      //   // .extract({ width: 282, height: 326, left: 490, top: 240 })
-      //   .extract({ width: 140, height: 73, left: 10, top: 52 })
-      //   .toFile(`${dir}/stats.png`)
-      //   .catch((err) => console.log(err));
     } else if (centerLayout.includes(id)) {
       await sharp(`${dir}/healthy.png`)
         .resize(1406, 936)
@@ -119,13 +113,6 @@ const runner = async () => {
         .extract({ width: 282, height: 163, left: 490, top: 240 })
         .toFile(`${dir}/portrait.png`)
         .catch((err) => console.log(err));
-
-      // await sharp(`${dir}/healthy.png`)
-      //   .resize(1406, 936)
-      //   // .extract({ width: 282, height: 326, left: 490, top: 240 })
-      //   .extract({ width: 320, height: 120, left: 545, top: 135 })
-      //   .toFile(`${dir}/stats.png`)
-      //   .catch((err) => console.log(err));
     } else {
       await sharp(`${dir}/healthy.png`)
         .resize(1192, 1787)
@@ -133,19 +120,7 @@ const runner = async () => {
         .extract({ width: 432, height: 400, left: 0, top: 0 })
         .toFile(`${dir}/portrait.png`)
         .catch((err) => console.log(err));
-
-      // await sharp(`${dir}/healthy.png`)
-      //   .resize(1192, 1787)
-      //   // .extract({ width: 432, height: 800, left: 0, top: 0 })
-      //   .extract({ width: 650, height: 160, left: 505, top: 165 })
-      //   .toFile(`${dir}/stats.png`)
-      //   .catch((err) => console.log(err));
     }
-
-    // await sharp(`${dir}/healthy.png`)
-    //   .toFile(`${dir}_portrait.png`)
-    //   .catch((err) => console.log(err));
-    // // }
   }
 
   for await (const c of crisis) {
@@ -186,7 +161,21 @@ const runner = async () => {
     // }
   }
 
-  await fetchCPS();
+  // await fetchCPS();
+  const sets = await getBoxSets();
+  for await (const box of sets) {
+    const dir = `${process.cwd()}/images/contentpacks`;
+    const id = box.code.toLowerCase();
+    console.log(id);
+    try {
+      await downloadImage(
+        'https://www.jarvis-protocol.com/box_sets/' + id + '.png',
+        `${dir}/${id}.png`
+      );
+    } catch (error) {
+      console.log({ error });
+    }
+  }
 };
 
 runner();
